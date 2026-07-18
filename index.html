@@ -24,13 +24,19 @@
       min-height: 100vh;
       font-family: "Trebuchet MS", "Comic Sans MS", sans-serif;
       background:
-        radial-gradient(circle at top left, rgba(255,255,255,0.9), transparent 18%),
-        linear-gradient(180deg, var(--sky), #bfdbfe 65%, #d9f99d);
+        linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.45)),
+        repeating-linear-gradient(
+          0deg,
+          #8b5a2b 0,
+          #8b5a2b 4px,
+          #5f3b1c 4px,
+          #5f3b1c 8px
+        );
       display: flex;
       justify-content: center;
       align-items: center;
       padding: 24px;
-      color: var(--ink);
+      color: #f4f1d0;
     }
 
     .game {
@@ -77,6 +83,7 @@
 
     .word {
       background: #fff;
+      color: #000;
       border: 2px solid #c4b5fd;
       border-radius: 999px;
       padding: 8px 12px;
@@ -109,6 +116,10 @@
       flex-wrap: wrap;
     }
 
+    .controls button {
+      min-width: 220px;
+    }
+
     button {
       border: none;
       border-radius: 999px;
@@ -136,24 +147,26 @@
 </head>
 <body>
   <div class="game">
-    <h1 class="title">🪄 You see me, you see me not\  key passage ✨</h1>
-    <p class="subtitle">Click each word to make it disappear into a fun blank!</p>
+    <h1 class="title">🪄 You see me, you see me not<br>key passage ✨</h1>
+    <p class="subtitle">Click on a word to send it to the backrooms, and click the blank spot to bring it back to this sigma world p.s. Andrew Mei made this sentence!</p>
 
     <div class="verse-card">
       <div id="verse" class="verse" aria-label="Bible verse"></div>
     </div>
 
     <div class="controls">
+      <button id="hideAllBtn" type="button">🙈 Hide Every Word in the Verse</button>
       <button id="resetBtn" type="button">🔄 Show the Full Verse Again</button>
     </div>
 
-    <p class="hint">Tap a word to hide it. Press the button to start over.</p>
+    <p class="hint">Click the buttons.</p>
   </div>
 
   <script>
     const verseText = "How great are his signs, how mighty his wonders! His kingdom is an everlasting kingdom, and his dominion endures from generation to generation.";
     const verseContainer = document.getElementById("verse");
     const resetBtn = document.getElementById("resetBtn");
+    const hideAllBtn = document.getElementById("hideAllBtn");
 
     function buildVerse() {
       verseContainer.innerHTML = "";
@@ -169,6 +182,13 @@
         verseContainer.appendChild(span);
       });
     }
+
+    hideAllBtn.addEventListener("click", () => {
+      const words = verseContainer.querySelectorAll(".word");
+      words.forEach((word) => {
+        word.classList.add("hidden");
+      });
+    });
 
     resetBtn.addEventListener("click", () => {
       buildVerse();
