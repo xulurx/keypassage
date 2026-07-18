@@ -23,15 +23,10 @@
       margin: 0;
       min-height: 100vh;
       font-family: "Trebuchet MS", "Comic Sans MS", sans-serif;
-      background:
-        linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.45)),
-        repeating-linear-gradient(
-          0deg,
-          #8b5a2b 0,
-          #8b5a2b 4px,
-          #5f3b1c 4px,
-          #5f3b1c 8px
-        );
+      background-image: url("Daniel_4_3.png");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -40,35 +35,43 @@
     }
 
     .game {
-      width: min(900px, 100%);
-      background: rgba(255, 255, 255, 0.78);
-      backdrop-filter: blur(6px);
-      border: 4px solid #ffffff;
+      width: 100%;
+      min-height: calc(100vh - 48px);
+      background: rgba(255, 255, 255, 0.14);
+      backdrop-filter: blur(4px);
+      border: 4px solid rgba(255, 255, 255, 0.45);
       border-radius: 28px;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
       padding: 28px;
       text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
 
     .title {
       margin: 0 0 10px;
       font-size: clamp(2rem, 4vw, 3rem);
-      color: var(--accent);
-      text-shadow: 2px 2px 0 #fff;
+      color: #ffffff;
+      text-shadow: 2px 2px 0 #000, 0 0 12px rgba(0, 0, 0, 0.8);
     }
 
     .subtitle {
       margin: 0 0 24px;
       font-size: 1.1rem;
-      color: #4b5563;
+      color: #fff9e6;
+      text-shadow: 1px 1px 0 #000;
     }
 
     .verse-card {
-      background: var(--card);
+      background: rgba(255, 249, 230, 0.84);
       border: 4px dashed #f59e0b;
       border-radius: 24px;
       padding: 24px;
       margin-bottom: 22px;
+      width: min(100%, 1100px);
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .verse {
@@ -82,6 +85,7 @@
     }
 
     .word {
+      display: inline-block;
       background: #fff;
       color: #000;
       border: 2px solid #c4b5fd;
@@ -91,6 +95,7 @@
       user-select: none;
       transition: transform 0.15s ease, background 0.15s ease, opacity 0.15s ease;
       box-shadow: 0 5px 10px rgba(91, 33, 182, 0.12);
+      min-width: 0;
     }
 
     .word:hover {
@@ -100,13 +105,15 @@
 
     .word.hidden {
       color: transparent;
-      background: linear-gradient(90deg, #dbeafe, #fde68a);
+      background: rgba(255, 255, 255, 0.42);
       border-style: dashed;
+      border-color: rgba(0, 0, 0, 0.35);
+      box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.12);
     }
 
     .word.hidden::after {
-      content: "🫥";
-      margin-left: 2px;
+      content: "";
+      margin-left: 0;
     }
 
     .controls {
